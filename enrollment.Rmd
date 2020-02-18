@@ -31,5 +31,10 @@ xDepartment <- x %>%
 
 xDepart <- head(xDepartment, 5)
 
+xDepart$largest_class <- NA
+
+xDepart %>%
+  g
+
 
 ```
