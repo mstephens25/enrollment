@@ -1,0 +1,35 @@
+---
+title: "enrollment"
+author: "Mark Stephens"
+date: "2/18/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+library(ggplot2)
+library(readxl)
+library(janitor)
+library(gt)
+
+```
+
+
+```{r}
+
+
+x <- read_excel("class_enrollment_summary_by_term2.18.20.xlsx", skip = 3) %>% 
+  clean_names()
+
+
+xDepartment <- x %>%
+  group_by(course_department) %>%
+  summarize(depart_total = sum(total)) %>%
+  arrange(desc(depart_total))
+
+xDepart <- head(xDepartment, 5)
+
+
+```
